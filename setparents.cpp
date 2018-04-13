@@ -50,8 +50,20 @@ p->setParent(this);
 void People::removeChild(People *p){
 for(int i=0;i < children.size(); i++){
 if(children[i] == p) {
-	children.erase(children.begin()+i);
+	int a =children[i]->children.size();
+	if(a!=0){
+	 
 	
+	
+	cout<<children[i]->children[i]->name;
+	for(int j=0;j<a;j++)
+	{
+		children[i]->removeChild(children[i]->children[j]);
+	}
+	
+	
+}
+	else children.erase(children.begin()+i);
 }
 }
 }
@@ -99,13 +111,15 @@ w->setParent(p);
 p->setParent(m);
 p->setParent(o);
 a->showChildren();
+
  People * mystring[]={a,b,c,d,e,f,g,h,w,p,m,o};
 vector <People *> x(mystring, mystring + sizeof(mystring) / sizeof(string) );
 for(int i = 1;i<x.size();i++)
 {
 		x[i]->showChildren();
 }
-delete d;
+b->removeChild(d);
+
  People * mystring2[]={a,b,c,f,p,m,o};
 vector <People *> y(mystring2, mystring2 + sizeof(mystring2) / sizeof(string) );
 for(int i = 0;i<y.size();i++)
